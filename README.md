@@ -1,6 +1,6 @@
 # HandI 2022
 
-### developemtn
+### development
 
 `npm run dev`
 
@@ -12,3 +12,4 @@
 
 Use after build
 `npm run check-file-size`
+
