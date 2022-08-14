@@ -1,0 +1,19 @@
+{
+  "name": "js13k-starter",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check-file-size": "node ./plugins/check-file-size.js"
+  },
+  "devDependencies": {
+    "html-minifier": "^4.0.0",
+    "jszip": "^3.10.1",
+    "roadroller": "^2.1.0",
+    "terser": "^5.14.2",
+    "vite": "^3.0.7"
+  }
+}
