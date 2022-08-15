@@ -3,9 +3,9 @@ export const dataMap = {
     stageNumber: 1,
     width: 5,
     height: 5,
-    mapData: [
+    data: [
       // Layer 0:
-      ["00000", "00000", "00000", "00001", "00001"],
+      ["10000", "00000", "00000", "00001", "00001"],
       // Layer 1:
       ["00111", "00001", "00001", "00000", "00000"],
     ],
@@ -24,7 +24,7 @@ export const dataMap = {
     stageNumber: 2,
     width: 5,
     height: 5,
-    mapData: [
+    data: [
       // Layer 0:
       ["10000", "10000", "10000", "10001", "10001"],
       // Layer 1:

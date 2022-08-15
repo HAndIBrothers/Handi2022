@@ -1,0 +1,62 @@
+/* 3D scene */
+#viewport {
+  width: 500px;
+  height: 500px;
+  overflow: hidden;
+  border: 1px solid;
+  position: relative;
+  perspective: 500px;
+}
+
+/* viewport 내부의 모든 Style을 변경 */
+#viewport * {
+  transform-style: preserve-3d; /* 3D로 변경 */
+  box-sizing: border-box;
+}
+/* Scene */
+#scene {
+  position: fixed;
+  transform: translate3D(-50%, -50%, -2500px) rotateX(45deg) rotateZ(0deg);
+}
+
+/* Global */
+.mapFace {
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  font-size: 100px;
+  transform-origin: 50% 100%;
+  backface-visibility: hidden;
+}
+
+/* Cube */
+.up {
+  transform: translateZ(200px);
+}
+.left {
+  transform: translate3D(-100px, -100px, 0) rotateZ(90deg) rotateX(-90deg);
+}
+.right {
+  transform: translate3D(100px, -100px, 0) rotateZ(-90deg) rotateX(-90deg);
+}
+.front {
+  transform: rotateX(-90deg);
+}
+.back {
+  transform: translate3D(0, -200px, 0) rotateZ(180deg) rotateX(-90deg);
+}
+.down {
+  transform: rotateX(180deg);
+}
+
+/* textures */
+.cube * {
+  background: #bbb;
+}
+.cube .front {
+  background: #ddd;
+}
+.cube .left,
+.cube .right {
+  background: #999;
+}
