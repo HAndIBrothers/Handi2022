@@ -1,3 +1,13 @@
+import { tileSize } from "../data.js";
+
+export const drawScene = (_width, _height) => {
+  viewport.style.width = _width + "px";
+  viewport.style.height = _height + "px";
+};
+export const drawFloor = (_width, _height) => {
+  scene.style.width = floor.style.width = _width * tileSize + "px";
+  scene.style.height = floor.style.height = _height * tileSize + "px";
+};
 export const drawMap = (_map) => {
   for (let zIndex = 0; zIndex < _map.data.length; zIndex++) {
     for (let yIndex = 0; yIndex < _map.data[zIndex].length; yIndex++) {
@@ -15,7 +25,7 @@ export const drawMap = (_map) => {
     }
   }
 };
-const tileSize = 200;
+
 const drawCube = (_x, _y, _z, _token) => {
   let html = "";
   if (Number(_token) === 1) {
@@ -30,15 +40,3 @@ const drawCube = (_x, _y, _z, _token) => {
   }
   return html;
 };
-
-// var drawCube = (x, y, z, id = "") => {
-//     html = `<div id='${id}' class='cube' style='transform:translate3d(${
-//       x * 200
-//     }px,${y * 200}px,${z * 200}px)'>`;
-//     html += `<div class="face up"></div>`;
-//     html += `<div class="face left"></div>`;
-//     html += `<div class="face back"></div>`;
-//     html += `<div class="face right"></div>`;
-//     html += `<div class="face front"></div>`;
-//     return html;
-//   };

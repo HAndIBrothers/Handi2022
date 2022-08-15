@@ -13,6 +13,13 @@
   transform-style: preserve-3d; /* 3D로 변경 */
   box-sizing: border-box;
 }
+
+/* Floor */
+#floor {
+  position: fixed;
+  background: #87c4ec;
+}
+
 /* Scene */
 #scene {
   position: fixed;
