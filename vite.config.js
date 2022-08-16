@@ -18,6 +18,7 @@ export default defineConfig({
         unsafe_arrows: true,
         unsafe_comps: true,
         unsafe_math: true,
+        drop_console: true,
       },
       mangle: { properties: "true" },
       module: true,
