@@ -1,3 +1,4 @@
 import "./style.css";
+import initializeGame from "./src/gameStart/initializeGame";
 
-document.querySelector("#app").append("Hello js13k!");
+initializeGame();
