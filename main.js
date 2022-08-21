@@ -1,5 +1,7 @@
 import { dataMap } from "./Module/Map/dataMap.js";
 import { tileSize, viewportSize } from "./Module/data.js";
+import "./style.css";
+import initializeGame from "./src/gameStart/initializeGame";
 import {
   initBlock,
   drawScene,
@@ -9,6 +11,7 @@ import {
 
 document.querySelector("#app").append("Hello js13k!");
 
+initializeGame();
 drawScene(viewportSize.width, viewportSize.height);
 drawFloor(dataMap[2].width, dataMap[2].height);
 drawMap(dataMap[2]);
