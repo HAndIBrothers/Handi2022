@@ -54,3 +54,33 @@ q:after {
   content: "";
   content: none;
 }
+
+/* 3D scene */
+#viewport {
+  width: 700px;
+  height: 600px;
+  overflow: hidden;
+  border: 1px solid;
+  position: relative;
+  perspective: 500px;
+}
+#viewport * {
+  transform-style: preserve-3d;
+  box-sizing: border-box;
+}
+#camera {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+#scene {
+  position: fixed;
+  /* transform: translate3D(-50%, -50%, -3000px) rotateX(60deg) rotateZ(-10deg); */
+  transform: translate3D(-50%, -50%, -3000px) rotateX(60deg) rotateZ(-2deg);
+}
+#floor {
+  position: fixed;
+  background: #31087b;
+}
