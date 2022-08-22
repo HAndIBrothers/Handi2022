@@ -64,13 +64,24 @@
 }
 
 /* textures */
-.cube * {
+.cubeBase * {
   background: #bbb;
 }
-.cube .front {
+.cubeBase .front {
   background: #ddd;
 }
-.cube .left,
-.cube .right {
+.cubeBase .left,
+.cubeBase .right {
   background: #999;
+}
+
+.cubeRed * {
+  background: #ff4c4c;
+}
+.cubeRed .front {
+  background: #ff9999;
+}
+.cubeRed .left,
+.cubeRed .right {
+  background: #ff0000;
 }
