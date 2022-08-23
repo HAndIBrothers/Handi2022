@@ -1,6 +1,7 @@
 import { drawCube } from "../drawCube";
 import { initCube } from "../initCube";
 import { tileSize } from "../../base/constants/constant";
+import { setColorCube } from "../setColorCube";
 
 export const renderMap = (_map) => {
   for (let zIndex = 0; zIndex < _map.data.length; zIndex++) {
@@ -19,4 +20,5 @@ export const renderMap = (_map) => {
     }
   }
   initCube(tileSize);
+  setColorCube();
 };
