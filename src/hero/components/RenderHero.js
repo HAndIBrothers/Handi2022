@@ -1,4 +1,4 @@
-import drawHero from "../drawHero";
+import DrawHero from "./DrawHero";
 export default function (target) {
-  target.insertAdjacentHTML("beforeEnd", drawHero(1, 1, 1));
+  target.insertAdjacentHTML("beforeEnd", DrawHero(1, 1, 1));
 }
