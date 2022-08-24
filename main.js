@@ -7,8 +7,6 @@ import { renderFloor } from "./src/map/components/RenderFloor";
 import { renderMap } from "./src/map/components/RenderMap";
 import { renderCamera } from "./src/camera/components/RenderCamera";
 
-document.querySelector("#app").append("Hello js13k!");
-
 initializeGame();
 renderScene(viewportSize.width, viewportSize.height);
 renderFloor(dataMap[1].width, dataMap[1].height);
