@@ -11,4 +11,8 @@ export const dataCube = [
     id: 3,
     color: "3380F2",
   },
+  {
+    id: 4,
+    color: "E98863",
+  },
 ];

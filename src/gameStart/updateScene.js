@@ -28,7 +28,7 @@ export default function updateScene() {
     // Test End
 
     console.warn("Check"); //
-    requestAnimationFrame(loop);
+    //requestAnimationFrame(loop);
   };
   loop();
 }

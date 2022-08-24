@@ -46,6 +46,8 @@
 /* Cube */
 .up {
   transform: translateZ(200px);
+  text-align: center;
+  padding-top: 50px;
 }
 .left {
   transform: translate3D(-100px, -100px, 0) rotateZ(90deg) rotateX(-90deg);

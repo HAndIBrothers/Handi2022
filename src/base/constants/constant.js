@@ -1,6 +1,6 @@
-export const tileSize = 150;
+export const tileSize = 200;
 export const zoomBase = -1500;
 export const viewportSize = {
-  width: 500,
-  height: 500,
+  width: 1024,
+  height: 600,
 };
