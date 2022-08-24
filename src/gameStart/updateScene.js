@@ -24,7 +24,7 @@ export default function updateScene() {
     renderScene(viewportSize.width, viewportSize.height);
     renderFloor(dataMap[1].width, dataMap[1].height);
     renderMap(dataMap[1]);
-    renderCamera(dataMap[1].start.x, dataMap[1].start.y, 1);
+    renderCamera(dataMap[1].start.x, dataMap[1].start.y, 0.5);
     // Test End
 
     console.warn("Check"); //

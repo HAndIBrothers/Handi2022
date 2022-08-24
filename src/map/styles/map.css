@@ -6,6 +6,7 @@
   border: 1px solid;
   position: relative;
   perspective: 500px;
+  background-color: aqua;
 }
 
 /* viewport 내부의 모든 Style을 변경 */
