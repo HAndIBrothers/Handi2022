@@ -8,16 +8,34 @@ import { renderCamera } from "../.././src/camera/components/RenderCamera";
 import { hero } from "../hero/constants/heroConstants";
 
 export default function updateScene() {
+  // key event
+  let keys = {
+    l: 0,
+    r: 0,
+    d: 0,
+    l: 0,
+    j: 0,
+  };
+
+  onkeydown = onkeyup = (e) => {
+    keys[
+      "j****lurd************************l**r************l*d***u**u"[
+        e.keyCode - 32
+      ]
+    ] = e.type[5];
+  };
+
   let t = 0;
   let stageLevel = 1;
-  let { x, y, z } = dataMap[stageLevel]["start"];
+  let { x: heroX, y: heroY, z: heroZ } = dataMap[stageLevel]["start"];
 
   const $scene = document.querySelector("#scene");
   const $floor = document.querySelector("#floor");
-  RenderHero($scene, x, y, z);
+  RenderHero($scene, heroX, heroY, heroZ);
 
   const $hero = document.querySelector(".hero");
   let { gravity, zSpeed, zAcceleration, isGrounded } = hero;
+
   const loop = () => {
     // 작동 확인을 위한 코드
     if (t % 1000 === 0) {
@@ -36,12 +54,27 @@ export default function updateScene() {
 
     // console.warn("Check"); //
 
-    zAcceleration -= gravity;
-    zSpeed += zAcceleration;
-    z += zSpeed;
+    // Hero Gravity
+    // zAcceleration -= gravity;
+    // zSpeed += zAcceleration;
+    // z += zSpeed;
 
-    $hero.style.transform = `translate3d(${x * 200}px,${y * 200}px,${
-      z * 200
+    /** Hero Move */
+    if (keys["u"]) {
+      heroY -= 0.1;
+    }
+    if (keys["r"]) {
+      heroX += 0.1;
+    }
+    if (keys["d"]) {
+      heroY += 0.1;
+    }
+    if (keys["l"]) {
+      heroX -= 0.1;
+    }
+
+    $hero.style.transform = `translate3d(${heroX * 200}px,${heroY * 200}px,${
+      heroZ * 200
     }px)`;
 
     requestAnimationFrame(loop);
