@@ -34,7 +34,7 @@ export default function updateScene() {
   RenderHero($scene, heroX, heroY, heroZ);
 
   const $hero = document.querySelector(".hero");
-  let { gravity, zSpeed, zAcceleration, isGrounded } = hero;
+  let { gravity, zSpeed, zAcceleration, isGrounded, canJump } = hero;
 
   const loop = () => {
     // 작동 확인을 위한 코드
@@ -54,10 +54,18 @@ export default function updateScene() {
 
     // console.warn("Check"); //
 
+    isGrounded = false;
     // Hero Gravity
-    // zAcceleration -= gravity;
-    // zSpeed += zAcceleration;
-    // z += zSpeed;
+    zAcceleration -= gravity;
+    zSpeed += zAcceleration;
+    heroZ += zSpeed;
+
+    if (heroZ < 0) heroZ = 0;
+    if (heroZ === 0) {
+      isGrounded = true;
+      zSpeed = 0;
+      zAcceleration = 0;
+    }
 
     /** Hero Move */
     if (keys["u"]) {
@@ -71,6 +79,14 @@ export default function updateScene() {
     }
     if (keys["l"]) {
       heroX -= 0.1;
+    }
+    if (keys["j"] && isGrounded && canJump) {
+      zSpeed = 0.3;
+      canJump = false;
+    }
+
+    if (!keys["j"]) {
+      canJump = true;
     }
 
     $hero.style.transform = `translate3d(${heroX * 200}px,${heroY * 200}px,${

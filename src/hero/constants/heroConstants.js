@@ -5,5 +5,6 @@ export const hero = {
   gravity: 0.001,
   zSpeed: 0,
   zAcceleration: 0,
-  isGrounded: false,
+  isGrounded: true,
+  canJump: true,
 };
