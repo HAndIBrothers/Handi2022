@@ -6,6 +6,7 @@ import { renderFloor } from "../.././src/map/components/RenderFloor";
 import { renderMap } from "../.././src/map/components/RenderMap";
 import { renderCamera } from "../.././src/camera/components/RenderCamera";
 import { hero } from "../hero/constants/heroConstants";
+import { resetScene } from "../scene/ResetScene";
 
 export default function updateScene() {
   // key event
@@ -41,6 +42,7 @@ export default function updateScene() {
   renderCamera(dataMap[1].start.x, dataMap[1].start.y, 0.5);
   RenderHero($scene, heroX, heroY, heroZ);
   const $hero = document.querySelector(".hero");
+
   // :: Test End
 
   const loop = () => {
@@ -88,6 +90,7 @@ export default function updateScene() {
     $hero.style.transform = `translate3d(${heroX * 200}px,${heroY * 200}px,${
       heroZ * 200
     }px)`;
+
 
     requestAnimationFrame(loop);
   };
