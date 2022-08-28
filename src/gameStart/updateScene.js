@@ -6,6 +6,7 @@ import { renderFloor } from "../.././src/map/components/RenderFloor";
 import { renderMap } from "../.././src/map/components/RenderMap";
 import { renderCamera } from "../.././src/camera/components/RenderCamera";
 import { hero } from "../hero/constants/heroConstants";
+import { resetScene } from "../scene/ResetScene";
 
 export default function updateScene() {
   // key event
@@ -31,10 +32,18 @@ export default function updateScene() {
 
   const $scene = document.querySelector("#scene");
   const $floor = document.querySelector("#floor");
-  RenderHero($scene, heroX, heroY, heroZ);
 
-  const $hero = document.querySelector(".hero");
   let { gravity, zSpeed, zAcceleration, isGrounded, canJump } = hero;
+
+  // :: Test Start
+  resetScene();
+  renderScene(viewportSize.width, viewportSize.height);
+  renderFloor(dataMap[1].width, dataMap[1].height);
+  renderMap(dataMap[1]);
+  renderCamera(dataMap[1].start.x, dataMap[1].start.y, 0.5);
+  RenderHero($scene, heroX, heroY, heroZ);
+  const $hero = document.querySelector(".hero");
+  // :: Test End
 
   const loop = () => {
     // 작동 확인을 위한 코드
@@ -42,17 +51,6 @@ export default function updateScene() {
       console.log(t);
     }
     t++;
-    $scene.style.width = $floor.style.width = 10 * 200 + "px";
-    $scene.style.height = $floor.style.height = 10 * 200 + "px";
-
-    // Test Start
-    // renderScene(viewportSize.width, viewportSize.height);
-    // renderFloor(dataMap[1].width, dataMap[1].height);
-    // renderMap(dataMap[1]);
-    // renderCamera(dataMap[1].start.x, dataMap[1].start.y, 0.5);
-    // Test End
-
-    // console.warn("Check"); //
 
     isGrounded = false;
     // Hero Gravity
