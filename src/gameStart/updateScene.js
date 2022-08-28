@@ -6,7 +6,6 @@ import { renderFloor } from "../.././src/map/components/RenderFloor";
 import { renderMap } from "../.././src/map/components/RenderMap";
 import { renderCamera } from "../.././src/camera/components/RenderCamera";
 import { hero } from "../hero/constants/heroConstants";
-import { resetScene } from "../scene/ResetScene";
 
 export default function updateScene() {
   // key event
@@ -36,7 +35,6 @@ export default function updateScene() {
   let { gravity, zSpeed, zAcceleration, isGrounded, canJump } = hero;
 
   // :: Test Start
-  resetScene();
   renderScene(viewportSize.width, viewportSize.height);
   renderFloor(dataMap[1].width, dataMap[1].height);
   renderMap(dataMap[1]);
