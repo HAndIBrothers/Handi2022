@@ -9,7 +9,7 @@ export const drawCube = (_x, _y, _z, _token) => {
 
     html = `<div id='x${_x}y${_y}z${_z}' class='${cube}${token}' style='transform:translate3d(${
       _x * tileSize
-    }px,${_y * -tileSize}px,${_z * tileSize}px)'>`;
+    }px,${_y * tileSize}px,${_z * tileSize}px)'>`;
     if (token === 4) {
       html += `<div class="mapFace up">💣</div>`;
     } else {
