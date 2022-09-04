@@ -8,6 +8,14 @@ import { MoveMap } from "../map/components/MoveMap";
 import { renderCamera } from "../.././src/camera/components/RenderCamera";
 import { hero } from "../hero/constants/heroConstants";
 import { resetScene } from "../scene/ResetScene";
+import {
+  isBottomCube,
+  isLeftCube,
+  isRightCube,
+  isUpCube,
+  isDownCube,
+  isVerticalUpCube,
+} from "../hero/helper/checkCubeType";
 
 export default function updateScene() {
   // key event
@@ -31,6 +39,8 @@ export default function updateScene() {
   let stageLevel = 1;
   let { x: heroX, y: heroY, z: heroZ } = dataMap[stageLevel]["start"];
 
+  const WALL = 1;
+
   const $scene = document.querySelector("#scene");
   const $floor = document.querySelector("#floor");
 
@@ -46,19 +56,17 @@ export default function updateScene() {
   let { gravity, zSpeed, zAcceleration, isGrounded, canJump } = hero;
 
   const loop = () => {
-    // 작동 확인을 위한 코드
-    if (t % 1000 === 0) {
-      console.log(t);
-    }
-    t++;
-
     isGrounded = false;
     // Hero Gravity
     zAcceleration -= gravity;
     zSpeed += zAcceleration;
     heroZ += zSpeed;
 
-    if (heroZ < 0) heroZ = 0;
+    // isBottomCube
+    // parameter:
+    // cube, x, y, z, w, h
+
+    if (isBottomCube(wall, heroX, heroY, heroZ)) if (heroZ < 0) heroZ = 0;
     if (heroZ === 0) {
       isGrounded = true;
       zSpeed = 0;
@@ -67,18 +75,34 @@ export default function updateScene() {
 
     /** Hero Move */
     if (keys["u"]) {
+      // isUpCube
+      // parameter:
+      // cube, x, y, z, w, d
+
       heroY -= 0.1;
     }
     if (keys["r"]) {
+      // isRightCube
+      // parameter:
+      // cube, x, y, z, w, h, d
       heroX += 0.1;
     }
     if (keys["d"]) {
+      // isDownCube
+      // parameter:
+      // cube, x, y, h, w, d
       heroY += 0.1;
     }
     if (keys["l"]) {
+      // isLeftCube
+      // parameter:
+      // cube, x, y, z, h, d
       heroX -= 0.1;
     }
     if (keys["j"] && isGrounded && canJump) {
+      // isVerticalUpCube
+      // parameter:
+      // cube, x, y, z, w, d, h
       zSpeed = 0.3;
       canJump = false;
     }
