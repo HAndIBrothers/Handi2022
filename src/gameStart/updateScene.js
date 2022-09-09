@@ -53,7 +53,16 @@ export default function updateScene() {
   const $hero = document.querySelector(".hero");
   // :: Test End
 
-  let { gravity, zSpeed, zAcceleration, isGrounded, canJump } = hero;
+  let {
+    gravity,
+    zSpeed,
+    zAcceleration,
+    isGrounded,
+    canJump,
+    width: heroWidth,
+    height: heroHeight,
+    depth: heroDepth,
+  } = hero;
 
   const loop = () => {
     isGrounded = false;
@@ -65,13 +74,15 @@ export default function updateScene() {
     // isBottomCube
     // parameter:
     // cube, x, y, z, w, h
-
-    if (isBottomCube(wall, heroX, heroY, heroZ)) if (heroZ < 0) heroZ = 0;
-    if (heroZ === 0) {
+    if (isBottomCube(WALL, heroX, heroY, heroZ, heroWidth, heroHeight)) {
+      heroZ = Math.ceil(heroZ);
       isGrounded = true;
       zSpeed = 0;
       zAcceleration = 0;
     }
+    // if (heroZ < 0) heroZ = 0;
+    // if (heroZ === 0) {
+    // }
 
     /** Hero Move */
     if (keys["u"]) {
