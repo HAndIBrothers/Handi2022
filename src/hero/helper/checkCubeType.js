@@ -1,16 +1,16 @@
 import getCubeValue from "./getCubeValue";
 
+// stage 어디에 두지?
 export function isBottomCube(cube, x, y, z, w, h) {
   const tile1 = getCubeValue(x, y, z);
   const tile2 = getCubeValue(x + w - 0.1, y, z);
   const tile3 = getCubeValue(x, y + h - 0.1, z);
   const tile4 = getCubeValue(x + w - 0.1, y + h - 0.1, z);
-
   if (
-    tile1 === cube ||
-    tile2 === cube ||
-    tile3 === cube ||
-    tile4 === cube ||
+    tile1 == cube ||
+    tile2 == cube ||
+    tile3 == cube ||
+    tile4 == cube ||
     z < 0
   ) {
     return true;

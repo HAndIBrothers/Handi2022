@@ -14,9 +14,9 @@ export default function initializeGame() {
   const map = ["00000000"];
   saveData("map", map);
 
-  console.log(getData("hero"));
-  console.log(getData("stageLevel"));
-  console.log(getData("map"));
+  // console.log(getData("hero"));
+  // console.log(getData("stageLevel"));
+  // console.log(getData("map"));
 
   updateScene();
 }
