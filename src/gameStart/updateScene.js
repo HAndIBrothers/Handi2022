@@ -3,7 +3,8 @@ import { dataMap } from "../.././src/base/constants/constantMap";
 import { viewportSize } from "../.././src/base/constants/constant";
 import { renderScene } from "../.././src/scene/components/RenderScene";
 import { renderFloor } from "../.././src/map/components/RenderFloor";
-import { renderMap } from "../.././src/map/components/RenderMap";
+import { RenderMap } from "../.././src/map/components/RenderMap";
+import { MoveMap } from "../map/components/MoveMap";
 import { renderCamera } from "../.././src/camera/components/RenderCamera";
 import { hero } from "../hero/constants/heroConstants";
 import { resetScene } from "../scene/ResetScene";
@@ -37,7 +38,7 @@ export default function updateScene() {
   resetScene();
   renderScene(viewportSize.width, viewportSize.height);
   renderFloor(dataMap[1].width, dataMap[1].height);
-  renderMap(dataMap[1]);
+  RenderMap();
   RenderHero($scene, heroX, heroY, heroZ);
   const $hero = document.querySelector(".hero");
   // :: Test End
@@ -90,6 +91,7 @@ export default function updateScene() {
       heroZ * 200
     }px)`;
     renderCamera(heroX, heroY, heroZ);
+    MoveMap();
 
     requestAnimationFrame(loop);
   };
