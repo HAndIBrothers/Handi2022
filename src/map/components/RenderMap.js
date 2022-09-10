@@ -4,27 +4,27 @@ import { tileSize } from "../../base/constants/constant";
 import { setColorCube } from "../setColorCube";
 
 export const RenderMap = () => {
-  map.insertAdjacentHTML("beforeEnd", drawCube(0, 8, 0, 1));
-  map.insertAdjacentHTML("beforeEnd", drawCube(2, 7, 0, 1));
-  map.insertAdjacentHTML("beforeEnd", drawCube(4, 7, 0, 1));
-  map.insertAdjacentHTML("beforeEnd", drawCube(-2, 7, 0, 1));
-  map.insertAdjacentHTML("beforeEnd", drawCube(5, 6, 0, 1));
-  map.insertAdjacentHTML("beforeEnd", drawCube(0, 5, 0, 1));
-  // for (let zIndex = 0; zIndex < _map.data.length; zIndex++) {
-  //   for (let yIndex = 0; yIndex < _map.data[zIndex].length; yIndex++) {
-  //     for (
-  //       let xIndex = 0;
-  //       xIndex < _map.data[zIndex][yIndex].length;
-  //       xIndex++
-  //     ) {
-  //       const token = _map.data[zIndex][yIndex][xIndex];
-  //       map.insertAdjacentHTML(
-  //         "beforeEnd",
-  //         drawCube(xIndex, yIndex, zIndex, token)
-  //       );
-  //     }
-  //   }
-  // }
+  let movingCubes = {
+    cube: [],
+  };
+  movingCubes = DrawAndSaveCube(movingCubes, 0, 8, 0, 1, 5);
   initCube(tileSize);
   setColorCube();
+
+  return movingCubes;
+};
+
+const DrawAndSaveCube = (_movingCubes, _x, _y, _z, _token, _speed) => {
+  map.insertAdjacentHTML("beforeEnd", drawCube(_x, _y, _z, _token));
+  _movingCubes.cube.push({
+    id: `x${_x}_y${_y}_z${_z}`,
+    pos: {
+      x: _x,
+      y: _y,
+      z: _z,
+    },
+    token: _token,
+    speed: _speed,
+  });
+  return _movingCubes;
 };

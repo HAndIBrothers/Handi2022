@@ -1,6 +1,6 @@
 import RenderHero from "../hero/components/RenderHero";
 import { dataMap } from "../.././src/base/constants/constantMap";
-import { viewportSize } from "../.././src/base/constants/constant";
+import { tileSize, viewportSize } from "../.././src/base/constants/constant";
 import { renderScene } from "../.././src/scene/components/RenderScene";
 import { renderFloor } from "../.././src/map/components/RenderFloor";
 import { RenderMap } from "../.././src/map/components/RenderMap";
@@ -38,7 +38,7 @@ export default function updateScene() {
   resetScene();
   renderScene(viewportSize.width, viewportSize.height);
   renderFloor(dataMap[1].width, dataMap[1].height);
-  RenderMap();
+  let movingCubes = RenderMap();
   RenderHero($scene, heroX, heroY, heroZ);
   const $hero = document.querySelector(".hero");
   // :: Test End
@@ -87,11 +87,11 @@ export default function updateScene() {
       canJump = true;
     }
 
-    $hero.style.transform = `translate3d(${heroX * 200}px,${heroY * 200}px,${
-      heroZ * 200
-    }px)`;
+    $hero.style.transform = `translate3d(${heroX * tileSize}px, ${
+      heroY * tileSize
+    }px, ${heroZ * tileSize}px)`;
     renderCamera(heroX, heroY, heroZ);
-    MoveMap();
+    movingCubes = MoveMap(movingCubes);
 
     requestAnimationFrame(loop);
   };
