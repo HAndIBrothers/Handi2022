@@ -70,33 +70,32 @@ export default function updateScene() {
     zAcceleration -= gravity;
     zSpeed += zAcceleration;
     heroZ += zSpeed;
-
     // isBottomCube
-    // parameter:
-    // cube, x, y, z, w, h
-    if (isBottomCube(WALL, heroX, heroY, heroZ, heroWidth, heroHeight)) {
+    const { pos: cubeCoords } = movingCubes["cube"][0];
+
+    if (isBottomCube(heroX, heroY, heroZ, heroWidth, heroDepth, [cubeCoords])) {
       heroZ = Math.ceil(heroZ);
       isGrounded = true;
       zSpeed = 0;
       zAcceleration = 0;
     }
-    // if (heroZ < 0) heroZ = 0;
-    // if (heroZ === 0) {
-    // }
 
     /** Hero Move */
+    // isUpCube
     if (keys["u"]) {
-      // isUpCube
-      // parameter:
-      // cube, x, y, z, w, d
-
       heroY -= 0.1;
+      if (isUpCube(heroX, heroY, heroZ, heroWidth, heroHeight, [cubeCoords])) {
+        heroY = Math.ceil(heroY);
+      }
     }
+    // isRightCube
     if (keys["r"]) {
-      // isRightCube
-      // parameter:
-      // cube, x, y, z, w, h, d
       heroX += 0.1;
+      if (
+        isRightCube(heroX, heroY, heroZ, heroHeight, heroDepth, [cubeCoords])
+      ) {
+        heroX = heroX - heroWidth;
+      }
     }
     if (keys["d"]) {
       // isDownCube
