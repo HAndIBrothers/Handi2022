@@ -26,7 +26,7 @@ const RenderRandom = (_movingCubes) => {
 
     for (let posX = -10; posX < 5; posX++) {
       if (Math.random() < 0.7) continue;
-      _movingCubes = DrawAndSaveCube(_movingCubes, posX, posY, 0, 1, speed);
+      _movingCubes = DrawAndSaveCube(_movingCubes, posX, posY, posZ, 1, speed);
     }
   }
   return _movingCubes;

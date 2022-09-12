@@ -15,11 +15,12 @@ export const MoveMap = (_movingCubes) => {
     }
     if (Number(data.cube[index].pos.y) > 10) {
       data.cube[index].pos.y = 2;
+      data.cube[index].pos.z = Number(data.cube[index].pos.z) + 8;
     }
 
     document.getElementById(
       data.cube[index].id
-    ).style.transform = `translate3D(${posX}px, ${posY}px, ${posZ})`;
+    ).style.transform = `translate3D(${posX}px, ${posY}px, ${posZ}px)`;
   }
   return data;
 };
