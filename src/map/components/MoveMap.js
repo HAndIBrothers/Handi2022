@@ -17,8 +17,10 @@ export const MoveMap = (_movingCubes) => {
       data.cube[index].pos.x = -15;
     }
     if (Number(data.cube[index].pos.y) > 10) {
+      data.cube[index].pos.x = Math.floor(Math.random() * 20 - 5);
       data.cube[index].pos.y = 2;
       data.cube[index].pos.z = Number(data.cube[index].pos.z) + 8;
+      data.cube[index].speed = Number(data.cube[index].speed) + 0.001;
     }
 
     document.getElementById(
