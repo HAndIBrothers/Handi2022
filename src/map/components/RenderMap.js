@@ -7,17 +7,23 @@ export const RenderMap = () => {
   let movingCubes = {
     cube: [],
   };
+  RenderSkull();
   movingCubes = RenderRandom(movingCubes);
   initCube(tileSize);
   setColorCube();
 
   return movingCubes;
 };
-
+const RenderSkull = () => {
+  for (let index = 0; index < 7; index++) {
+    map.insertAdjacentHTML("beforeEnd", drawCube(index, 11, 0, 2));
+  }
+};
 const RenderRandom = (_movingCubes) => {
   for (let posY = 8; posY > 0; posY--) {
-    if (Math.random() < 0.1) continue;
     const speed = Math.random() * 2 + 1;
+    const posZ = Math.abs(posY - 8);
+
     for (let posX = -10; posX < 5; posX++) {
       if (Math.random() < 0.7) continue;
       _movingCubes = DrawAndSaveCube(_movingCubes, posX, posY, 0, 1, speed);
@@ -28,7 +34,7 @@ const RenderRandom = (_movingCubes) => {
 const DrawAndSaveCube = (_movingCubes, _x, _y, _z, _token, _speed) => {
   map.insertAdjacentHTML("beforeEnd", drawCube(_x, _y, _z, _token));
   _movingCubes.cube.push({
-    id: `x${_x}_y${_y}_z${_z}`,
+    id: `x${_x}y${_y}z${_z}`,
     pos: {
       x: _x,
       y: _y,

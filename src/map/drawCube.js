@@ -5,7 +5,7 @@ export const drawCube = (_x, _y, _z, _token) => {
   let html = "";
   const token = Number(_token);
 
-  const cubeId = `x${_x}_y${_y}_z${_z}`;
+  const cubeId = `x${_x}y${_y}z${_z}`;
   const cubeClass = `cube${token}`;
   const cubePosX = `${_x * tileSize}`;
   const cubePosY = `${_y * tileSize}`;
@@ -16,6 +16,8 @@ export const drawCube = (_x, _y, _z, _token) => {
     html = `<div id='${cubeId}' class='${cubeClass}' style='transform:translate3d(${cubePos})'>`;
     if (token === 4) {
       html += `<div class="mapFace up">💣</div>`;
+    } else if (token === 2) {
+      html += `<div class="mapFace up">💀</div>`;
     } else {
       html += `<div class="mapFace up">${_x}/${_y}</div>`;
     }
