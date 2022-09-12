@@ -25,6 +25,7 @@ export default function updateScene() {
   };
 
   let score = 0;
+  document.getElementById("score").innerHTML = `Score : ${score}`;
   SetMaxScore(score);
 
   onkeydown = onkeyup = (e) => {
