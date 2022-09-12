@@ -35,14 +35,10 @@ export default function updateScene() {
     ] = e.type[5];
   };
 
-  let t = 0;
   let stageLevel = 1;
   let { x: heroX, y: heroY, z: heroZ } = dataMap[stageLevel]["start"];
 
-  const WALL = 1;
-
   const $scene = document.querySelector("#scene");
-  const $floor = document.querySelector("#floor");
 
   // :: Test Start
   resetScene();
@@ -71,9 +67,13 @@ export default function updateScene() {
     zSpeed += zAcceleration;
     heroZ += zSpeed;
     // isBottomCube
-    const { pos: cubeCoords } = movingCubes["cube"][0];
+    // const { pos: cubeCoords } = movingCubes["cube"][0];
 
-    if (isBottomCube(heroX, heroY, heroZ, heroWidth, heroDepth, [cubeCoords])) {
+    const cubeCoords = movingCubes.cube.map((cube) => {
+      return cube.pos;
+    });
+
+    if (isBottomCube(heroX, heroY, heroZ, heroWidth, heroDepth, cubeCoords)) {
       heroZ = Math.ceil(heroZ);
       isGrounded = true;
       zSpeed = 0;
@@ -84,16 +84,14 @@ export default function updateScene() {
     // isUpCube
     if (keys["u"]) {
       heroY -= 0.1;
-      if (isUpCube(heroX, heroY, heroZ, heroWidth, heroHeight, [cubeCoords])) {
+      if (isUpCube(heroX, heroY, heroZ, heroWidth, heroHeight, cubeCoords)) {
         heroY = Math.ceil(heroY);
       }
     }
     // isRightCube
     if (keys["r"]) {
       heroX += 0.1;
-      if (
-        isRightCube(heroX, heroY, heroZ, heroHeight, heroDepth, [cubeCoords])
-      ) {
+      if (isRightCube(heroX, heroY, heroZ, heroHeight, heroDepth, cubeCoords)) {
         heroX = heroX - heroWidth;
       }
     }
