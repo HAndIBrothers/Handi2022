@@ -1,6 +1,16 @@
 import { storageKey_Cubes, tileSize } from "../../base/constants/constant";
 import { getData, saveData } from "../../utils/store";
+import { getColors } from "../setColorCube";
 
+const colorPick = [
+  "e06666",
+  "f6b26b",
+  "ffd966",
+  "93c47d",
+  "76a5af",
+  "6fa8dc",
+  "8e7cc3",
+];
 export const MoveMap = (_movingCubes) => {
   let data = _movingCubes;
   for (let index = 0; index < data.cube.length; index++) {
@@ -21,6 +31,25 @@ export const MoveMap = (_movingCubes) => {
       data.cube[index].pos.y = 2;
       data.cube[index].pos.z = Number(data.cube[index].pos.z) + 8;
       data.cube[index].speed = Number(data.cube[index].speed) + 0.001;
+
+      if (Number(data.cube[index].pos.z) > 10) {
+        const colors = getColors(
+          colorPick[Math.floor((Number(data.cube[index].pos.z) % 70) / 10)]
+        );
+
+        document.getElementById(
+          data.cube[index].id
+        ).children[0].style.background = `#${colors.all}`;
+        document.getElementById(
+          data.cube[index].id
+        ).children[1].style.background = `#${colors.side}`;
+        document.getElementById(
+          data.cube[index].id
+        ).children[2].style.background = `#${colors.side}`;
+        document.getElementById(
+          data.cube[index].id
+        ).children[3].style.background = `#${colors.front}`;
+      }
     }
 
     document.getElementById(

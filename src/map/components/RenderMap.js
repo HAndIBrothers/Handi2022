@@ -20,7 +20,7 @@ const RenderSkull = () => {
   }
 };
 const RenderRandom = (_movingCubes) => {
-  _movingCubes = DrawAndSaveCube(_movingCubes, 3, 9, -1, 1, 0);
+  _movingCubes = DrawAndSaveCube(_movingCubes, 3, 9, -1, 2, 0);
   for (let posY = 8; posY > 0; posY--) {
     const speed = Math.random() * 2 + 1;
     const posZ = Math.abs(posY - 8);

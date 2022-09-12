@@ -7,6 +7,14 @@ export const setColorCube = () => {
   });
 };
 
+export const getColors = (_baseColor) => {
+  return {
+    front: _baseColor,
+    all: sixteenDiff(_baseColor, 222222),
+    side: sixteenDiff(sixteenDiff(_baseColor, 222222), 111111),
+  };
+};
+
 const colorCube = (_number, _baseColor) => {
   const front = _baseColor;
 

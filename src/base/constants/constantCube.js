@@ -1,7 +1,7 @@
 export const dataCube = [
   {
     id: 1,
-    color: "bbbbbb",
+    color: "e06666",
   },
   {
     id: 2,
