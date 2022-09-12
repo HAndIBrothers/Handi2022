@@ -35,9 +35,6 @@ export function isBottomCube(x, y, z, w, h, targets) {
         return true;
       }
     }
-    if (z < 0) {
-      return true;
-    }
   }
   return false;
 }
