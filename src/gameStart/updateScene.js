@@ -9,8 +9,11 @@ import { renderCamera } from "../.././src/camera/components/RenderCamera";
 import { hero } from "../hero/constants/heroConstants";
 import { resetScene } from "../scene/ResetScene";
 import { isBottomCube } from "../hero/helper/checkCubeType";
+import RenderGameOver from "../gameOver/components/RenderGameOver";
 
 export default function updateScene() {
+  let requestId;
+  let play = true;
   // key event
   let keys = {
     l: 0,
@@ -71,6 +74,13 @@ export default function updateScene() {
       zAcceleration = 0;
     }
 
+    if (heroZ < -10) {
+      play = false;
+      window.cancelAnimationFrame(requestId);
+      RenderGameOver();
+      return;
+    }
+
     /** Hero Move */
     if (keys["u"]) {
       heroY -= 0.1;
@@ -99,7 +109,7 @@ export default function updateScene() {
     renderCamera(heroX, heroY, heroZ);
     movingCubes = MoveMap(movingCubes);
 
-    requestAnimationFrame(loop);
+    requestId = requestAnimationFrame(loop);
   };
   loop();
 }

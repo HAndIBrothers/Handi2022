@@ -1,0 +1,21 @@
+.game-over {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-over h3 {
+  color: red;
+}
+
+.game-over p {
+  color: pink;
+}
