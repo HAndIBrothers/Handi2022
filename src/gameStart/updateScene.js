@@ -43,7 +43,7 @@ export default function updateScene() {
   // :: Test Start
   resetScene();
   renderScene(viewportSize.width, viewportSize.height);
-  renderFloor(dataMap[1].width, dataMap[1].height);
+  //renderFloor(dataMap[1].width, dataMap[1].height);
   let movingCubes = RenderMap();
   RenderHero($scene, heroX, heroY, heroZ);
   const $hero = document.querySelector(".hero");

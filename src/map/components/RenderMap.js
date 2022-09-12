@@ -7,7 +7,7 @@ export const RenderMap = () => {
   let movingCubes = {
     cube: [],
   };
-  RenderSkull();
+  //RenderSkull();
   movingCubes = RenderRandom(movingCubes);
   initCube(tileSize);
   setColorCube();
@@ -20,12 +20,13 @@ const RenderSkull = () => {
   }
 };
 const RenderRandom = (_movingCubes) => {
+  _movingCubes = DrawAndSaveCube(_movingCubes, 3, 9, -1, 1, 0);
   for (let posY = 8; posY > 0; posY--) {
     const speed = Math.random() * 2 + 1;
     const posZ = Math.abs(posY - 8);
 
-    for (let posX = -10; posX < 5; posX++) {
-      if (Math.random() < 0.7) continue;
+    for (let posX = -20; posX < 5; posX++) {
+      if (Math.random() < 0.75) continue;
       _movingCubes = DrawAndSaveCube(_movingCubes, posX, posY, posZ, 1, speed);
     }
   }

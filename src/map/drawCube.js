@@ -22,7 +22,6 @@ export const drawCube = (_x, _y, _z, _token) => {
       html += `<div class="mapFace up">${_x}/${_y}</div>`;
     }
     html += `<div class="mapFace left"></div>`;
-    html += `<div class="mapFace back"></div>`;
     html += `<div class="mapFace right"></div>`;
     html += `<div class="mapFace front"></div><div>`;
   }
