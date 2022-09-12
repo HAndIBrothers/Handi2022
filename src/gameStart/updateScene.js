@@ -9,6 +9,7 @@ import { renderCamera } from "../.././src/camera/components/RenderCamera";
 import { hero } from "../hero/constants/heroConstants";
 import { resetScene } from "../scene/ResetScene";
 import { isBottomCube } from "../hero/helper/checkCubeType";
+import { getData, saveData } from "../utils/store";
 
 export default function updateScene() {
   // key event
@@ -19,6 +20,9 @@ export default function updateScene() {
     l: 0,
     j: 0,
   };
+
+  let score = 0;
+  SetMaxScore(score);
 
   onkeydown = onkeyup = (e) => {
     keys[
@@ -96,6 +100,13 @@ export default function updateScene() {
     $hero.style.transform = `translate3d(${heroX * tileSize}px, ${
       heroY * tileSize
     }px, ${heroZ * tileSize}px)`;
+    if (score < Math.floor(heroZ)) {
+      score = Math.floor(heroZ);
+      document.getElementById("score").innerHTML = `Score : ${score}`;
+
+      SetMaxScore(score);
+    }
+
     renderCamera(heroX, heroY, heroZ);
     movingCubes = MoveMap(movingCubes);
 
@@ -103,3 +114,11 @@ export default function updateScene() {
   };
   loop();
 }
+
+const SetMaxScore = (_score) => {
+  let maxScore = getData("handi_max_score");
+  if (maxScore === null) maxScore = 0;
+  if (maxScore < _score) maxScore = _score;
+  saveData("handi_max_score", maxScore);
+  document.getElementById("maxScore").innerHTML = `Max Score : ${maxScore}`;
+};
