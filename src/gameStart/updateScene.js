@@ -2,7 +2,6 @@ import RenderHero from "../hero/components/RenderHero";
 import { dataMap } from "../.././src/base/constants/constantMap";
 import { tileSize, viewportSize } from "../.././src/base/constants/constant";
 import { renderScene } from "../.././src/scene/components/RenderScene";
-import { renderFloor } from "../.././src/map/components/RenderFloor";
 import { RenderMap } from "../.././src/map/components/RenderMap";
 import { MoveMap } from "../map/components/MoveMap";
 import { renderCamera } from "../.././src/camera/components/RenderCamera";
@@ -41,14 +40,11 @@ export default function updateScene() {
 
   const $scene = document.querySelector("#scene");
 
-  // :: Test Start
   resetScene();
   renderScene(viewportSize.width, viewportSize.height);
-  // renderFloor(dataMap[1].width, dataMap[1].height);
   let movingCubes = RenderMap();
   RenderHero($scene, heroX, heroY, heroZ);
   const $hero = document.querySelector(".hero");
-  // :: Test End
 
   let {
     gravity,

@@ -7,18 +7,13 @@ export const RenderMap = () => {
   let movingCubes = {
     cube: [],
   };
-  //RenderSkull();
   movingCubes = RenderRandom(movingCubes);
   initCube(tileSize);
   setColorCube();
 
   return movingCubes;
 };
-const RenderSkull = () => {
-  for (let index = 0; index < 7; index++) {
-    map.insertAdjacentHTML("beforeEnd", drawCube(index, 11, 0, 2));
-  }
-};
+
 const RenderRandom = (_movingCubes) => {
   _movingCubes = DrawAndSaveCube(_movingCubes, 3, 9, -1, 2, 0);
   for (let posY = 8; posY > 0; posY--) {

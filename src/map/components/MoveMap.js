@@ -1,5 +1,4 @@
-import { storageKey_Cubes, tileSize } from "../../base/constants/constant";
-import { getData, saveData } from "../../utils/store";
+import { tileSize } from "../../base/constants/constant";
 import { getColors } from "../setColorCube";
 
 const colorPick = [
@@ -34,26 +33,26 @@ export const MoveMap = (_movingCubes) => {
 
       if (Number(data.cube[index].pos.z) > 10) {
         const colors = getColors(
-          colorPick[Math.floor((Number(data.cube[index].pos.z) % 70) / 10)]
+          colorPick[Math.floor((Number(data.cube[index].pos.z) % 70) / 10)],
         );
 
         document.getElementById(
-          data.cube[index].id
+          data.cube[index].id,
         ).children[0].style.background = `#${colors.all}`;
         document.getElementById(
-          data.cube[index].id
+          data.cube[index].id,
         ).children[1].style.background = `#${colors.side}`;
         document.getElementById(
-          data.cube[index].id
+          data.cube[index].id,
         ).children[2].style.background = `#${colors.side}`;
         document.getElementById(
-          data.cube[index].id
+          data.cube[index].id,
         ).children[3].style.background = `#${colors.front}`;
       }
     }
 
     document.getElementById(
-      data.cube[index].id
+      data.cube[index].id,
     ).style.transform = `translate3D(${posX}px, ${posY}px, ${posZ}px)`;
   }
   return data;

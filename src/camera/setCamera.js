@@ -1,4 +1,4 @@
-import { tileSize, viewportSize, zoomBase } from "../base/constants/constant";
+import { tileSize } from "../base/constants/constant";
 
 export const setCamera = (_x, _y, _z) => {
   scene.style.transformOrigin = `0% 0%`;
